@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<style>
+	body{
+			font-family:  Garamond, sans-serif;
+	}	
+
+	#box1 {
+		background-color: #77B3F0;
+		width:875px;
+		height:80px;
+		border:6px solid #627ED9;
+	}
+
+	.center {
+		text-align:center;
+	}
+
+	#header {
+		font-weight: bold;
+
+	}
+	</style>
+	<div id="box1"><h1 class="center" id="header">Hydrate App</h1></div>
+	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+	<title>Hydrate App</title>
+</head>
+<body>
+<h2>Try to keep the blue line close to the red line throughout the day</h2>
+
+<canvas id="myChart" style="width:100%;max-width:700px"></canvas>
+<h2>What have you drunk today?</h2>
+
+
+
+<form id="AddWaterForm">
+	<label for="drinkType">Drink Type:</label>
+  	<select id="drinkType" name="Dtype">
+    	<option value="water">Water</option>
+    	<option value="juice">Juice</option>
+    	<option value="coffee">Coffee</option>
+    	<option value="tea">Tea</option>
+    	<option value="fizzydrink">Fizzy drink</option>
+  	</select>
+  	<label for="drinkSize">Drink Size:</label>
+  	<select id="drinkSize" name="Dsize">
+    	<option value="small">Small</option>
+    	<option value="medium">Medium</option>
+    	<option value="large">Large</option>
+  	</select>
+  	<label for="drinkTime">Drink Time</label>
+  	<select id="drinkTime" name="Dtime">
+    	<option value="7:00">7:00</option>
+    	<option value="7:30">7:30</option>
+    	<option value="8:00">8:00</option>
+    	<option value="8:30">8:30</option>
+    	<option value="9:00">9:00</option>
+    	<option value="9:30">9:30</option>
+    	<option value="10:00">10:00</option>
+    	<option value="10:30">10:30</option>
+    	<option value="11:00">11:00</option>
+    	<option value="11:30">11:30</option>
+    	<option value="12:00">12:00</option>
+    	<option value="12:30">12:30</option>
+    	<option value="13:00">13:00</option>
+    	<option value="13:30">13:30</option>
+    	<option value="14:00">14:00</option>
+    	<option value="14:30">14:30</option>
+    	<option value="15:00">15:00</option>
+    	<option value="15:30">15:30</option>
+    	<option value="16:00">16:00</option>
+    	<option value="16:30">16:30</option>
+    	<option value="17:00">17:00</option>
+    	<option value="17:30">17:30</option>
+    	<option value="18:00">18:00</option>
+    	<option value="18:30">18:30</option>
+    	<option value="19:00">19:00</option>
+    	<option value="19:30">19:30</option>
+    	<option value="20:00">20:00</option>
+    	<option value="20:30">20:30</option>
+    	<option value="21:00">21:00</option>
+
+  	</select>
+
+  	<button type="button" id="drinkButton" name="drinkSubmit">Enter</button>
+</form>
+<h2>What have you eaten today?</h2>
+	<form id="AddFoodForm">
+		<label for="foodType">Food Type:</label>
+  		<select id="foodType" name="Ftype">
+    		<option value="breakfast">Breakfast</option>
+    		<option value="lunch">Lunch</option>
+    		<option value="dinner">Dinner</option>
+    		<option value="snack">Snack</option>
+  		</select>
+  		<label for="foodTime">Meal Time</label>
+  		<select id="foodTime" name="Ftime">
+    		<option value="7:00">7:00</option>
+    		<option value="7:30">7:30</option>
+    		<option value="8:00">8:00</option>
+    		<option value="8:30">8:30</option>
+    		<option value="9:00">9:00</option>
+    		<option value="9:30">9:30</option>
+    		<option value="10:00">10:00</option>
+    		<option value="10:30">10:30</option>
+    		<option value="11:00">11:00</option>
+    		<option value="11:30">11:30</option>
+    		<option value="12:00">12:00</option>
+    		<option value="12:30">12:30</option>
+    		<option value="13:00">13:00</option>
+    		<option value="13:30">13:30</option>
+    		<option value="14:00">14:00</option>
+    		<option value="14:30">14:30</option>
+    		<option value="15:00">15:00</option>
+    		<option value="15:30">15:30</option>
+    		<option value="16:00">16:00</option>
+    		<option value="16:30">16:30</option>
+    		<option value="17:00">17:00</option>
+    		<option value="17:30">17:30</option>
+    		<option value="18:00">18:00</option>
+    		<option value="18:30">18:30</option>
+    		<option value="19:00">19:00</option>
+    		<option value="19:30">19:30</option>
+    		<option value="20:00">20:00</option>
+    		<option value="20:30">20:30</option>
+    		<option value="21:00">21:00</option>
+
+  		</select>
+
+  		<button type="button" id="foodButton" name="foodSubmit">Enter</button>
+	</form>
+
+<h2 class="catagory-bar">Suggested Actions:</h2>
+<form>
+	<button type="button" id="scorebutton" name="Recommendation">Recommend</button>
+</form>
+<ul id="recDisplay"></ul>
+	
+
+	<h2 class="category-bar">Entered Drinks:</h2>
+
+	<ol id = "drinkDisplay">
+	</ol>
+	
+	<h2 class="category-bar">Entered Food:</h2>
+	<ol id = "foodDisplay">
+	</ol>
+	<p>Click on any drink or food items to remove</p>
+
+<script src="js/hydrationapp.js"></script>
+</body>
+
+
+<footer>
+	<button type="button"  name="AboutApp" onclick="window.open('AboutApp.html', '_blank');" id="aboutbutton">About App</button>
+</footer>
+</html>
